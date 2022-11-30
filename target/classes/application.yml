@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+## 开启自动配置报告
+## Negative（不生效）\ Positive（生效）
+debug: true
+
+## static-path-pattern 静态文件访问路径
+## static-locations 静态文件地址
+#spring:
+#  mvc:
+#    static-path-pattern: /res/**
+#  resources:
+#    static-locations: [classpath:/static/]
+
+
+## 配置文件
+person:
+  userName: zhangsan
+  boss: false
+  birth: 2022/12/12 12:12:12
+  age: 18
+  dog:
+    name: tomcat
+    age: 23
+  interests: [篮球,游泳]
+  animal:
+    - jerry
+    - mario
+  score:
+    english:
+      first: 30
+      second: 40
+      third: 50
+    math: [131,140,148]
+    chinese: {first: 128,second: 136}
+  salarys: [3999,4999.98,5999.99]
+  allPets:
+    sick:
+      - {name: tom,age: 18}
+      - {name: jerry,age: 47}
+    health: [{name: mario,age: 48}]
+

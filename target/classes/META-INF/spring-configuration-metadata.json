@@ -1,0 +1,77 @@
+{
+  "groups": [
+    {
+      "name": "mycar",
+      "type": "com.lizi.boot.Bean.Car",
+      "sourceType": "com.lizi.boot.Bean.Car"
+    },
+    {
+      "name": "person",
+      "type": "com.lizi.boot.Bean.Person",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    }
+  ],
+  "properties": [
+    {
+      "name": "mycar.brand",
+      "type": "java.lang.String",
+      "sourceType": "com.lizi.boot.Bean.Car"
+    },
+    {
+      "name": "mycar.price",
+      "type": "java.lang.Integer",
+      "sourceType": "com.lizi.boot.Bean.Car"
+    },
+    {
+      "name": "person.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.all-pets",
+      "type": "java.util.Map<java.lang.String,java.util.List<com.lizi.boot.Bean.Dog>>",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.animal",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.birth",
+      "type": "java.util.Date",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.boss",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.dog",
+      "type": "com.lizi.boot.Bean.Dog",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.interests",
+      "type": "java.lang.String[]",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.salarys",
+      "type": "java.util.Set<java.lang.Double>",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.score",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    },
+    {
+      "name": "person.user-name",
+      "type": "java.lang.String",
+      "sourceType": "com.lizi.boot.Bean.Person"
+    }
+  ],
+  "hints": []
+}
