@@ -7,11 +7,21 @@ debug: true
 
 ## static-path-pattern 静态文件访问路径
 ## static-locations 静态文件地址
-#spring:
+## add-mappings 禁用启用所有静态资源规则
+## cache:  period: 10000 静态资源缓存时间
+#
+spring:
 #  mvc:
 #    static-path-pattern: /res/**
-#  resources:
-#    static-locations: [classpath:/static/]
+  resources:
+    static-locations: [classpath:/static/]
+    add-mappings: true
+    cache:
+      period: 10000
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 
 ## 配置文件

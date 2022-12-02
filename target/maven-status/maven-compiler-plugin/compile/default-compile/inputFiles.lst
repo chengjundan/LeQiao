@@ -1,2 +1,12 @@
-D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\LeQiaoApplication.java
-D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\Controller\LeQiaoController.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\Car.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\Person.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Controller\LeQiaoController.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\MyImportBeanDefinitionRegistrar.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\MyImportSelector.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\RpcRequest.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\Dog.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\User.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\RainBow.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\LeQiaoApplication.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\MyConfig.java
+D:\AutonomousLearning\code\LeQiao\src\main\java\com\lizi\boot\Bean\RpcResponse.java

@@ -1,0 +1,13 @@
+-------------------------------------------------------------------------------
+Test set: com.lizi.Test.SpringBootConfigApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.01 s <<< FAILURE! - in com.lizi.Test.SpringBootConfigApplicationTests
+initializationError  Time elapsed: 0.003 s  <<< ERROR!
+java.lang.Exception: Method test() should not be static
+
+initializationError  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.MultipleFailuresError: 
+Multiple Failures (2 failures)
+	java.lang.Exception: Method test() should not be static
+	java.lang.Exception: Method test should have no parameters
+

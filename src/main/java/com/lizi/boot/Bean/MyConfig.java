@@ -79,7 +79,125 @@ public class MyConfig {
             ○ 用户直接自己@Bean替换底层的组件
             ○ 用户去看这个组件是获取的配置文件什么值就去修改。
         xxxxxAutoConfiguration ---> 组件 ---> xxxxProperties里面拿值  ----> application.properties
+        * * *
         * */
     }
 
+
+    // * ● 当配置类只有一个有参构造器时,构造器中的所有参数会从容器中确定。
+    // *
+    // * ● SpringMVC功能的自动配置类 WebMvcAutoConfiguration,生效
+    // * 代码：
+    // * @Configuration(proxyBeanMethods = false)
+    //   @ConditionalOnWebApplication(type = Type.SERVLET)
+    //   @ConditionalOnClass({ Servlet.class, DispatcherServlet.class, WebMvcConfigurer.class })
+    //   @ConditionalOnMissingBean(WebMvcConfigurationSupport.class)
+    //   @AutoConfigureOrder(Ordered.HIGHEST_PRECEDENCE + 10)
+    //   @AutoConfigureAfter({ DispatcherServletAutoConfiguration.class, TaskExecutionAutoConfiguration.class, ValidationAutoConfiguration.class })
+    //   public class WebMvcAutoConfiguration {}
+    //  -->*
+    //     *
+    //     * ● 向容器中配置了属性及其绑定
+    //     * 如：WebMvcProperties == spring.mvc 、ResourceProperties == spring.resources
+    //     * 代码：
+    //     * @Configuration(proxyBeanMethods = false)
+    //       @Import(EnableWebMvcConfiguration.class)
+    //       @EnableConfigurationProperties({ WebMvcProperties.class, ResourceProperties.class })
+    //       @Order(0)
+    //       public static class WebMvcAutoConfigurationAdapter implements WebMvcConfigurer {}
+    //        -->*
+    //           *
+    //           * ● ResourceProperties resourceProperties;获取和spring.resources绑定的所有的值的对象
+    //           * ● WebMvcProperties mvcProperties 获取和spring.mvc绑定的所有的值的对象
+    //           * ● ListableBeanFactory beanFactory Spring的beanFactory
+    //           * ● HttpMessageConverters 找到所有的HttpMessageConverters
+    //           * ● ResourceHandlerRegistrationCustomizer 找到资源处理器的自定义器
+    //           * ● DispatcherServletPath （**有疑问在新的版本中没有DispatcherServletPath 与 ServletRegistrationBean）
+    //           * ● ServletRegistrationBean  给应用注册Servlet、Filter....
+    //           * public WebMvcAutoConfigurationAdapter(ResourceProperties resourceProperties, WebMvcProperties mvcProperties,
+    //                     ListableBeanFactory beanFactory, ObjectProvider<HttpMessageConverters> messageConvertersProvider,
+    //                     ObjectProvider<ResourceHandlerRegistrationCustomizer> resourceHandlerRegistrationCustomizerProvider,
+    //                     ObjectProvider<DispatcherServletPath> dispatcherServletPath,
+    //                     ObjectProvider<ServletRegistrationBean<?>> servletRegistrations) {
+    //                 this.resourceProperties = resourceProperties;
+    //                 this.mvcProperties = mvcProperties;
+    //                 this.beanFactory = beanFactory;
+    //                 this.messageConvertersProvider = messageConvertersProvider;
+    //                 this.resourceHandlerRegistrationCustomizer = resourceHandlerRegistrationCustomizerProvider.getIfAvailable();
+    //                 this.dispatcherServletPath = dispatcherServletPath;
+    //                 this.servletRegistrations = servletRegistrations;
+    //             }
+    //             *
+    //             * ● 访问静态资源的默认配置规则
+    //             * ● 引入了jQuery这个静态资源/webjars/**这个前缀已经默认配置好了，同时也添加了/META-INF/resources/webjars/这个静态资源访问路径
+    //             * ● 把自定义的 spring.mvc.static-path-pattern 的路径添加到资源处理器中
+    //             * ● !this.resourceProperties.isAddMappings()控制静态资源的访问是否生效
+    //             * ● DurationcachePeriod=this.resourceProperties.getCache().getPeriod();静态资源存放的时间
+    //              -->*
+    //                 * public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    //                     if (!this.resourceProperties.isAddMappings()) {
+    //                         logger.debug("Default resource handling disabled");
+    //                     } else {
+    //                         Duration cachePeriod = this.resourceProperties.getCache().getPeriod();
+    //                         CacheControl cacheControl = this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl();
+    //                         if (!registry.hasMappingForPattern("/webjars/**")) {
+    //                             this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{"/webjars/**"})
+    //                             .addResourceLocations(new String[]{"classpath:/META-INF/resources/webjars/"})
+    //                             .setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+    //                         }
+    //
+    //                         String staticPathPattern = this.mvcProperties.getStaticPathPattern();
+    //                         if (!registry.hasMappingForPattern(staticPathPattern)) {
+    //                             this.customizeResourceHandlerRegistration(registry.addResourceHandler(new String[]{staticPathPattern})
+    //                             .addResourceLocations(WebMvcAutoConfiguration.getResourceLocations(this.resourceProperties.getStaticLocations()))
+    //                             .setCachePeriod(this.getSeconds(cachePeriod)).setCacheControl(cacheControl));
+    //                         }
+    //
+    //                     }
+    //                 }
+    //              -->*
+    //                 *
+    //                 *
+    //                 *
+    //                 *HandlerMapping：处理器映射。保存了每一个Handler能处理哪些请求。
+    //
+    //	                @Bean
+    //		            public WelcomePageHandlerMapping welcomePageHandlerMapping(ApplicationContext applicationContext,
+    //				        FormattingConversionService mvcConversionService, ResourceUrlProvider mvcResourceUrlProvider) {
+    //			            WelcomePageHandlerMapping welcomePageHandlerMapping = new WelcomePageHandlerMapping(
+    //					        new TemplateAvailabilityProviders(applicationContext), applicationContext, getWelcomePage(),
+    //					        this.mvcProperties.getStaticPathPattern());
+    //			            welcomePageHandlerMapping.setInterceptors(getInterceptors(mvcConversionService, mvcResourceUrlProvider));
+    //			            welcomePageHandlerMapping.setCorsConfigurations(getCorsConfigurations());
+    //			            return welcomePageHandlerMapping;
+    //		            }
+    //
+    //	                WelcomePageHandlerMapping(TemplateAvailabilityProviders templateAvailabilityProviders,
+    //			        ApplicationContext applicationContext, Optional<Resource> welcomePage, String staticPathPattern) {
+    //                  ● 欢迎页不可以指定映射前缀
+    //		            if (welcomePage.isPresent() && "/**".equals(staticPathPattern)) {
+    //                      //要用欢迎页功能，必须是/**
+    //			            logger.info("Adding welcome page: " + welcomePage.get());
+    //			            setRootViewName("forward:index.html");
+    //		            }
+    //		            else if (welcomeTemplateExists(templateAvailabilityProviders, applicationContext)) {
+    //                      // 调用Controller  /index
+    //			            logger.info("Adding welcome page template: index");
+    //			            setRootViewName("index");
+    //		            }
+    //	            }
+    //             *
+    //                  ● 创建xxxConfig类并实现WebMvcConfiger,就会使WebMvcAutoConfiguration配置类失效,
+    //                  ● 因为在该类中有@ConditionalOnMissingBean（WebMvcConfigurationSupport.class）,这个注解会触发 ,
+    //                  ● 这是因为我们在自定义的xxxConfig类中实现了WebMvcConfiger,点进这个接口就可以知道它继承了WebMvcConfigurationSupport,
+    //                  ● 所以springboot自动帮我们配置好的webMvcAutoConfiguration就会失效,注意只是我们在xxxConfig类中重写的default失效。
+
+    //                  ● 由于favicon.ico图标是由浏览器自动发送请求/favicon.ico获取并保存在session域中的。
+    //                  ● 因此，如果我们在配置文件中设置了静态资源访问前缀，那么浏览器发送的/favicon.ico由于不符合访问前缀要求，就会获取不到相对应的图标了(图标也是静态资源的一种)。
+    //             *
+    //             *
+    //             *
+    //             *
+    //             *
+    // *
 }

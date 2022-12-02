@@ -4,9 +4,8 @@ import com.lizi.boot.Bean.Car;
 import com.lizi.boot.Bean.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 /*@ResponseBody
 @Controller*/
@@ -20,9 +19,39 @@ public class LeQiaoController {
     @Autowired
     private Person person;
 
+    // @RequestMapping(value = "/user",method = RequestMethod.GET)
+    @GetMapping("/user")
+    public String getUser(){
+        return "GET-张三";
+    }
+
+    // @RequestMapping(value = "/user",method = RequestMethod.POST)
+    @PostMapping("/user")
+    public String saveUser(){
+        return "POST-张三";
+    }
+
+    // @RequestMapping(value = "/user",method = RequestMethod.PUT)
+    @PutMapping("/user")
+    public String putUser(){
+        return "PUT-张三";
+    }
+
+    // @RequestMapping(value = "/user",method = RequestMethod.DELETE)
+    @DeleteMapping("/user")
+    public String deleteUser(){
+        return "DELETE-张三";
+    }
+
     @RequestMapping("/car")
     public Car car(){
         return car;
+    }
+
+    @RequestMapping("/show")
+    public String index(Model model){
+        model.addAttribute("msg","一给Giao");
+        return "index";
     }
 
     @RequestMapping("/person")
