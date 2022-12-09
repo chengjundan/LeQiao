@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- xmlns:th="http://www.thymeleaf.org" -->
-<html lang="en" >
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -14,12 +14,30 @@
     <input value="REST-POST 提交" type="submit"/>
 </form>
 <form action="/LeQiao/user" method="post">
-    <input name="_method" value="PUT" type="hidden"/>
+    <input name="_m" value="PUT" type="hidden"/>
     <input value="REST-PUT 提交" type="submit"/>
 </form>
 <form action="/LeQiao/user" method="post">
-    <input name="_method" value="DELETE" type="hidden"/>
+    <input name="_m" value="DELETE" type="hidden"/>
     <input value="REST-DELETE 提交" type="submit"/>
 </form>
+<hr/>
+<h2>测试基本注解：</h2>
+<ul>
+    <li><a href="/path/513/owner/zhangSan">@PathVariable(路径变量)</a></li>
+    <li><a href="/req">@RequestHeader(获取请求头)</a></li>
+    <li><a href="/reqParam?age=18&inters=saiErDa&inters=saiErDa2">@RequestParam(获取请求参数)</a></li>
+    <li><a href="/getCookieValue">@CookieValue(获取Cookie值)</a></li>
+    <li>@RequestAttribute(获取Request域属性)</li>
+    <li>@RequestBody(获取请求体)</li>
+    <li><a href="/path/513/owner/zhangSan">@MatrixVariable(矩阵变量)</a></li>
+</ul>
+
+<from action = "/save" method="post">
+    @RequestBody(获取请求体)</br>
+    用户名：<input name="userName"/></br>
+    密码：<input name="passWord"/>
+    <input type="submit" value="提交"/>
+</from>
 </body>
 </html>

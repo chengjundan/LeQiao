@@ -173,7 +173,7 @@ public class MyConfig {
     //		            }
     //
     //	                WelcomePageHandlerMapping(TemplateAvailabilityProviders templateAvailabilityProviders,
-    //			        ApplicationContext applicationContext, Optional<Resource> welcomePage, String staticPathPattern) {
+    //			                                ApplicationContext applicationContext, Optional<Resource> welcomePage, String staticPathPattern) {
     //                  ● 欢迎页不可以指定映射前缀
     //		            if (welcomePage.isPresent() && "/**".equals(staticPathPattern)) {
     //                      //要用欢迎页功能，必须是/**

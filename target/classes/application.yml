@@ -9,7 +9,7 @@ debug: true
 ## static-locations 静态文件地址
 ## add-mappings 禁用启用所有静态资源规则
 ## cache:  period: 10000 静态资源缓存时间
-#
+##
 spring:
 #  mvc:
 #    static-path-pattern: /res/**
