@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- xmlns:th="http://www.thymeleaf.org" -->
-<html lang="en" >
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -25,12 +25,23 @@
 <h2>测试基本注解：</h2>
 <ul>
     <li><a href="/path/513/owner/zhangSan">@PathVariable(路径变量)</a></li>
-    <li><a href="/req">@RequestHeader(获取请求头)</a></li>
-    <li><a href="/path/513/owner/zhangSan">@RequestParam(获取请求参数)</a></li>
-    <li><a href="/path/513/owner/zhangSan">@CookieValue(获取Cookie值)</a></li>
-    <li><a href="/path/513/owner/zhangSan">@RequestAttribute(获取Request域属性)</a></li>
-    <li><a href="/path/513/owner/zhangSan">@RequestBody(获取请求体)</a></li>
-    <li><a href="/path/513/owner/zhangSan">@MatrixVariable(矩阵变量)</a></li>
+    <li><a href="/getRequestHeader">@RequestHeader(获取请求头)</a></li>
+    <li><a href="/getRequestParam?age=18&inters=saiErDa&inters=saiErDa2">@RequestParam(获取请求参数)</a></li>
+    <li><a href="/getCookieValue">@CookieValue(获取Cookie值)</a></li>
+    <li><a href="/getRequestAttribute">@RequestAttribute(获取Request域属性)</a></li>
+    <li><a href="/path/513/owner/zhangSan">@PathVariable(路径变量)</a></li>
+    <li>
+        <form action="/getRequestBody" method="post">
+            @RequestBody(获取请求体)</br>
+            用户名：<input name="userName"/></br>
+            密码：<input name="passWord"/>
+            <input type="submit" value="提交"/>
+        </form>
+    </li>
+    <li><a href="/cars/sell;low=22;brand=byd,audi,bm">@MatrixVariable(矩阵变量)</a></li>
+    <li><a href="/cars/sell;low=22;brand=byd;brand=audi;brand=bm">@MatrixVariable(矩阵变量)</a></li>
+    <li><a href="/getMatrixVariable/1;age=20/2;age=10">@MatrixVariable(矩阵变量) /boss/{bossId}/{empId}</a></li>
 </ul>
+
 </body>
 </html>
